@@ -68,7 +68,9 @@ function NewsCard({ news }) {
       <div className="news-card-info">
         <h6>{news.title}</h6>
         <p>{news.description}</p>
-        <button>Read News</button>
+        <a href={news.url} target="blank">
+          <button>Read Full News</button>
+        </a>
       </div>
     </li>
   );
@@ -113,24 +115,4 @@ function ArticleCard() {
 
 function Footer() {
   return <div className="footer">Crafted with ❤️ by Tufail dar</div>;
-}
-
-function Modal() {
-  return (
-    <div className="Modal">
-      <h5>Title</h5>
-      <span>❌</span>
-      <p>
-        Si vous cliquez sur « Tout accepter », nos partenaires (y compris 244
-        qui font partie du Cadre de transparence et de consentement dIAB) et
-        nous utiliserons également des témoins et vos données person… [+982
-        chars]
-      </p>
-      <div className="article-details">
-        <p>Source : Yahoo</p>
-        <p>Author : Shehlik K Manzoor</p>
-        <p>Publish Date : 20 Nov 2023</p>
-      </div>
-    </div>
-  );
 }
