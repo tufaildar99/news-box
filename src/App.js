@@ -1,14 +1,30 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 
 export default function App() {
+  const [newsItems, setNewsItems] = useState([]);
+
+  useEffect(() => {
+    async function getNews() {
+      var url =
+        "https://newsapi.org/v2/top-headlines?country=in&pageSize=10&apiKey=3db17b9c150c49a6a07ad1fff46cafe0";
+
+      var req = new Request(url);
+
+      const response = await fetch(req);
+      const data = await response.json();
+      setNewsItems(data.articles);
+    }
+
+    getNews();
+  }, []);
+
   return (
     <div className="app">
       <Header />
       <Main>
-        <NewsBox />
+        <NewsBox newsItems={newsItems} />
         <ArticleBox />
       </Main>
-
       <Footer />
     </div>
   );
@@ -29,39 +45,29 @@ function Main({ children }) {
   return <div className="main">{children}</div>;
 }
 
-function NewsBox() {
+function NewsBox({ newsItems }) {
   return (
     <div className="news-box">
       <h2>Top Headlines in India</h2>
+
       <ul>
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
+        {newsItems.map((news) => (
+          <NewsCard news={news} />
+        ))}
       </ul>
     </div>
   );
 }
 
-function NewsCard() {
+function NewsCard({ news }) {
   return (
     <li className="news-card">
       <div className="news-card-image">
-        <img
-          src="https://image.cnbcfm.com/api/v1/image/107342257-1701510839311-gettyimages-1808128597-US_GAS_PRICES.jpeg?v=1706834062&w=1920&h=1080"
-          alt="img"
-        />
+        <img src={news.urlToImage} alt="img" />
       </div>
       <div className="news-card-info">
-        <h6>
-          Meta earnings top estimates as forecast, buyback, and new dividend
-          send shares soaring - Yahoo Finance
-        </h6>
-        <p>
-          Meta reported Q4 2023 earnings on the top and bottom line, while
-          offering a strong Q1 outlook.
-        </p>
+        <h6>{news.title}</h6>
+        <p>{news.description}</p>
         <button>Read News</button>
       </div>
     </li>
