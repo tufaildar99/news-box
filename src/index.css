@@ -1,13 +1,184 @@
-body {
+/* Reset some default styles */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Arial", sans-serif;
+}
+
+/* App container styles */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Header styles */
+.header {
+  background-color: #ffffff;
+  color: #181717;
+  padding: 20px; /* Increased padding for better visibility */
+  text-align: center;
+  font-size: 24px; /* Larger font size */
+}
+
+.header p {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+/* Main container styles */
+.main {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* NewsBox styles */
+.news-box {
+  width: 45%;
+}
+.news-box h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.news-card {
+  list-style: none;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.news-card h6 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.news-card button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* ArticleBox styles */
+.article-box {
+  width: 45%;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* ArticleCard styles */
+.article-card {
+  list-style: none;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.article-card:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.article-card h6 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.article-card button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Footer styles */
+.footer {
+  margin-top: 20px;
+  padding: 10px;
+
+  color: #282525;
+  text-align: center;
+}
+
+/* Modal styles */
+.Modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.Modal h5 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.Modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.article-details {
+  margin-top: 20px;
+}
+
+/* Add animation for modal */
+.Modal.show {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.news-card-image img,
+.article-image img {
+  width: 70%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
